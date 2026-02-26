@@ -58,7 +58,7 @@ export const CITIES: City[] = [
       east: -43.2500,
       west: -43.3800
     },
-    enabled: true,
+    enabled: false,
     collectionName: 'matias_barbosa_pontos',
     metadata: {
       description: 'Pontos de coleta e abrigos',
