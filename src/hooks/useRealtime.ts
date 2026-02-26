@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import {
   collection,
   query,
@@ -18,9 +18,29 @@ export interface UseRealtimeOptions {
   enabled?: boolean;
 }
 
+function mapDocToPoint(doc: DocumentData): Point {
+  const data = doc.data();
+  return {
+    id: doc.id,
+    tipo: data.tipo,
+    nome: data.nome,
+    endereco: data.endereco,
+    complemento: data.complemento,
+    horarios: data.horarios,
+    doacoes: data.doacoes,
+    responsavel: data.responsavel,
+    telefone: data.telefone,
+    capacidade: data.capacidade,
+    lat: data.lat,
+    lng: data.lng,
+    timestamp: data.timestamp,
+    citySlug: data.citySlug,
+    _version: data._version,
+  } as Point;
+}
+
 /**
- * Hook for real-time Firestore updates
- * Subscribes to a collection and updates when documents change
+ * Hook for real-time Firestore updates with API fallback
  */
 export function useRealtime(
   collectionName: string,
@@ -36,6 +56,26 @@ export function useRealtime(
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [newPointsCount, setNewPointsCount] = useState(0);
+  const prevCountRef = useRef(0);
+
+  // Extract citySlug from collectionName (e.g., 'jf_pontos' -> 'jf')
+  const citySlug = collectionName.replace('_pontos', '');
+
+  // API fallback
+  const fetchFromAPI = useCallback(async () => {
+    try {
+      const res = await fetch(`/api/points?city=${citySlug}`);
+      const data = await res.json();
+      if (data.success && data.points) {
+        setPoints(data.points);
+        prevCountRef.current = data.points.length;
+      }
+    } catch {
+      setError('Erro ao carregar pontos. Recarregue a página.');
+    } finally {
+      setLoading(false);
+    }
+  }, [citySlug]);
 
   useEffect(() => {
     if (!enabled) {
@@ -46,7 +86,12 @@ export function useRealtime(
     setLoading(true);
     setError(null);
 
-    // Create Firestore query
+    // Timeout: if Firestore doesn't respond in 8s, fall back to API
+    const timeout = setTimeout(() => {
+      console.warn('Firestore timeout, falling back to API');
+      fetchFromAPI();
+    }, 8000);
+
     const pointsRef = collection(db, collectionName);
     const q = query(
       pointsRef,
@@ -54,53 +99,34 @@ export function useRealtime(
       limit(limitCount)
     );
 
-    // Subscribe to real-time updates
     const unsubscribe = onSnapshot(
       q,
       (snapshot: QuerySnapshot<DocumentData>) => {
-        // Map documents to points
-        const updatedPoints: Point[] = snapshot.docs.map(doc => {
-          const data = doc.data();
-          return {
-            id: doc.id,
-            tipo: data.tipo,
-            nome: data.nome,
-            endereco: data.endereco,
-            complemento: data.complemento,
-            horarios: data.horarios,
-            doacoes: data.doacoes,
-            responsavel: data.responsavel,
-            telefone: data.telefone,
-            capacidade: data.capacidade,
-            lat: data.lat,
-            lng: data.lng,
-            timestamp: data.timestamp,
-            citySlug: data.citySlug,
-            _version: data._version,
-          } as Point;
-        });
+        clearTimeout(timeout);
+        const updatedPoints: Point[] = snapshot.docs.map(mapDocToPoint);
 
-        // Detect new points (if we already have points loaded)
-        if (points.length > 0 && updatedPoints.length > points.length) {
-          const newCount = updatedPoints.length - points.length;
+        if (prevCountRef.current > 0 && updatedPoints.length > prevCountRef.current) {
+          const newCount = updatedPoints.length - prevCountRef.current;
           setNewPointsCount(prev => prev + newCount);
         }
+        prevCountRef.current = updatedPoints.length;
 
         setPoints(updatedPoints);
         setLoading(false);
       },
       (err) => {
+        clearTimeout(timeout);
         console.error('Firestore listener error:', err);
-        setError('Erro ao conectar com o servidor. Recarregue a página.');
-        setLoading(false);
+        // Fall back to API instead of showing error
+        fetchFromAPI();
       }
     );
 
-    // Cleanup listener on unmount
     return () => {
+      clearTimeout(timeout);
       unsubscribe();
     };
-  }, [collectionName, limitCount, enabled, points.length]);
+  }, [collectionName, limitCount, enabled, fetchFromAPI]);
 
   // Reset new points counter
   const resetNewPointsCount = () => {
