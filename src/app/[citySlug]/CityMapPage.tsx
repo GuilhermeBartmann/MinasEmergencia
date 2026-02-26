@@ -146,18 +146,23 @@ export function CityMapPage({ city }: { city: City }) {
       {/* Main Content */}
       <main className="flex-1 flex flex-col overflow-hidden">
         {/* Stats - Always visible */}
-        <div className="container mx-auto px-4 py-4 flex-shrink-0">
+        <div className={cn(
+          "container mx-auto flex-shrink-0",
+          isMobile ? "px-3 py-2" : "px-4 py-4"
+        )}>
           <CityStats
             totalPoints={points.length}
             coletaCount={coletaCount}
             abrigoCount={abrigoCount}
           />
 
-          {/* Real-time indicator */}
-          <div className="flex items-center justify-center gap-2 text-xs text-gray-500 mt-2">
-            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-            <span>Atualizações em tempo real ativas</span>
-          </div>
+          {/* Real-time indicator - Hidden on mobile to save space */}
+          {!isMobile && (
+            <div className="flex items-center justify-center gap-2 text-xs text-gray-500 mt-2">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+              <span>Atualizações em tempo real ativas</span>
+            </div>
+          )}
         </div>
 
         {/* Map + Form Container */}
@@ -172,19 +177,6 @@ export function CityMapPage({ city }: { city: City }) {
             )}
           >
             {/* Info Alert - Desktop only, above map */}
-            {!isMobile && (
-              <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-[1000] max-w-2xl px-4">
-                <Alert variant="info" className="shadow-lg">
-                  <p className="font-semibold mb-1 text-sm">Como usar:</p>
-                  <ul className="text-xs space-y-0.5">
-                    <li>• Clique nos marcadores para ver detalhes</li>
-                    <li>• Use "Como Chegar" para navegação</li>
-                    <li>• Novos pontos aparecem automaticamente</li>
-                    <li>• Cadastre pontos com o botão "+"</li>
-                  </ul>
-                </Alert>
-              </div>
-            )}
 
             <MapView
               city={city}

@@ -8,17 +8,17 @@ export interface HeaderProps {
 export function Header({ title = 'Emergência Coletas', showBackButton = false }: HeaderProps) {
   return (
     <header className="bg-emergency-600 text-white shadow-lg sticky top-0 z-30">
-      <div className="container mx-auto px-4 py-3">
+      <div className="container mx-auto px-3 md:px-4 py-2 md:py-3">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 md:gap-3">
             {showBackButton && (
               <Link
                 href="/"
-                className="p-2 hover:bg-emergency-700 rounded-lg transition-colors"
+                className="p-1.5 md:p-2 hover:bg-emergency-700 rounded-lg transition-colors"
                 aria-label="Voltar para página inicial"
               >
                 <svg
-                  className="w-6 h-6"
+                  className="w-5 h-5 md:w-6 md:h-6"
                   fill="none"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -30,16 +30,16 @@ export function Header({ title = 'Emergência Coletas', showBackButton = false }
                 </svg>
               </Link>
             )}
-            <h1 className="text-xl md:text-2xl font-bold">{title}</h1>
+            <h1 className="text-lg md:text-xl lg:text-2xl font-bold">{title}</h1>
           </div>
 
           {/* Emergency Phone */}
           <a
             href="tel:199"
-            className="flex items-center gap-2 bg-emergency-700 hover:bg-emergency-800 px-3 py-2 rounded-lg transition-colors text-sm md:text-base"
+            className="flex items-center gap-1.5 md:gap-2 bg-emergency-700 hover:bg-emergency-800 px-2 md:px-3 py-1.5 md:py-2 rounded-lg transition-colors text-xs md:text-sm lg:text-base"
           >
             <svg
-              className="w-5 h-5"
+              className="w-4 h-4 md:w-5 md:h-5"
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -56,7 +56,7 @@ export function Header({ title = 'Emergência Coletas', showBackButton = false }
       </div>
 
       {/* Warning Banner */}
-      <div className="bg-emergency-700 text-white py-2 px-4 text-center text-xs md:text-sm animate-pulse-warning">
+      <div className="bg-emergency-700 text-white py-1.5 md:py-2 px-3 md:px-4 text-center text-xs md:text-sm animate-pulse-warning">
         <p className="font-semibold">
           ⚠️ ATENÇÃO: Verifique sempre a autenticidade dos pontos de coleta. Cuidado com golpes!
         </p>

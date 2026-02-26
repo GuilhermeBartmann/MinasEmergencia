@@ -74,6 +74,28 @@
   max-width: 300px;
 }
 
+/* Mobile responsive popup */
+@media (max-width: 768px) {
+  .map-popup {
+    @apply p-3;
+    min-width: 200px;
+    max-width: 250px;
+    font-size: 0.875rem;
+  }
+
+  .map-popup h3 {
+    @apply text-base mb-1;
+  }
+
+  .map-popup .space-y-2 {
+    @apply space-y-1;
+  }
+
+  .custom-popup .leaflet-popup-content-wrapper {
+    @apply text-sm;
+  }
+}
+
 .custom-popup .leaflet-popup-tip {
   @apply bg-white;
 }

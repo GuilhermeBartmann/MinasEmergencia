@@ -1,0 +1,1169 @@
+{
+  "timestamp": "2026-02-26T15:35:24.340Z",
+  "summary": {
+    "status": "PARTIAL",
+    "totalDocs": 287,
+    "migrated": 194,
+    "skipped": 0,
+    "invalid": 93,
+    "errorsCount": 93,
+    "warningsCount": 50
+  },
+  "errors": [
+    {
+      "id": "0Jni9OU6aEflsuQ6hwdA",
+      "nome": "Casa Verde",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "1qp7qS7f6jGHOWLWU8Af",
+      "nome": "Loja Candy Kids",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "28YDBTsgVJRCZcGvDhL1",
+      "nome": "Faculdade Estácio de Sá",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "2GtfCZ22gXG85W89zJjD",
+      "nome": "Unimed Juiz de Fora",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "3Ue0M1VhzCbZ4pbW9T7L",
+      "nome": "Comunidade Evangélica Água da Rocha",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "4RrmZom5UWiytzHgDkYQ",
+      "nome": "Art Vidal Festas",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\"",
+        "responsavel: Invalid string: must match pattern /^[a-zA-ZÀ-ÿ\\s]*$/"
+      ]
+    },
+    {
+      "id": "4bLpCDSO9zM7iB9B40CA",
+      "nome": "Salvaterra Restaurante",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "5iWtJs9SE9LkTsUvoOgi",
+      "nome": "Salao top unhas",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\"",
+        "responsavel: Invalid string: must match pattern /^[a-zA-ZÀ-ÿ\\s]*$/"
+      ]
+    },
+    {
+      "id": "6HJ3TVlU7lzLEqJ93RCr",
+      "nome": "Loja Maçônica",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "6N1GuEvaSLr3M6QYiVHM",
+      "nome": "Atelier das molduras",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "6OdYFl6WzCqYvK3BogIU",
+      "nome": "Região Noroeste",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "AJlGcwO80o2SKI5WM45I",
+      "nome": "Ateliê bendita unha",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\"",
+        "responsavel: Invalid string: must match pattern /^[a-zA-ZÀ-ÿ\\s]*$/"
+      ]
+    },
+    {
+      "id": "AZYefqVg5obc8K6ZTQq4",
+      "nome": "Terminal Rodoviário",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "Amo2bqAx1JI51vGpIJJ0",
+      "nome": "Fiemg",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "CLl3rT17RemmSvwNAXy5",
+      "nome": "IGREJA DO EVANGELHO QUADRANGULAR PROGRESSO",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "CXiHQ5csMerzs4wCf8k6",
+      "nome": "Distribuidora Cinco Irmãos",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "CayoyNgcEZMqiWJsl1ka",
+      "nome": "Igreja Conexão Presbiteriana",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "EuVkchXk9uxSa7P1DbRM",
+      "nome": "Apoio",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "GwFkWxJ39jB68dnI70Qj",
+      "nome": "Casa da Mulher",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "Hh603lPOGNSbPzYMDAc9",
+      "nome": "Lá Espina",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "HlU4xeK5w9MNq3zNcWz7",
+      "nome": "Souza Gomes Imóveis",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "HmFuaXvkSCrypdA6UMAv",
+      "nome": "Casa da Mulher",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "IE5Xm8ueyHffea1vc89U",
+      "nome": "Secretaria Especial de Igualdade Racial",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "KoVpLLwGJ5YqVzb02gE6",
+      "nome": "Igreja Casa da Benção Sede",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\"",
+        "responsavel: Invalid string: must match pattern /^[a-zA-ZÀ-ÿ\\s]*$/"
+      ]
+    },
+    {
+      "id": "L1XvSGwR8r3xjFnbbCHp",
+      "nome": "Paróquia Santa Cruz",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "LdEsGQl9Fy6SqeBmVrFr",
+      "nome": "Igreja São Sebastião",
+      "tipo": "coleta",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "telefone: Invalid string: must match pattern /^\\(\\d{2}\\)\\s\\d{4,5}-\\d{4}$/"
+      ]
+    },
+    {
+      "id": "LyQlghehCWtfHbpEyXd1",
+      "nome": "Drogaria benfica",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\"",
+        "telefone: Invalid string: must match pattern /^\\(\\d{2}\\)\\s\\d{4,5}-\\d{4}$/"
+      ]
+    },
+    {
+      "id": "O3Cz7NwndjXpDxR2PYcQ",
+      "nome": "Clínica da Mulher",
+      "tipo": "coleta",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "telefone: Invalid string: must match pattern /^\\(\\d{2}\\)\\s\\d{4,5}-\\d{4}$/"
+      ]
+    },
+    {
+      "id": "P7MCu6Z2rPRspcn0QY64",
+      "nome": "Escola Municipal Paulo Rogério dos Santos",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "PYlab3bokD2r5QOt6drr",
+      "nome": "Igreja Metodista em Bela Aurora",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "Pd4rM4Lpr8D37dOoLnqn",
+      "nome": "Shopping Alameda",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "Pw3gPDauQ9fTAfSwfmuv",
+      "nome": "Brownie da Fabi",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "QDPvxVSndpA7CNoRXJ3J",
+      "nome": "Pet shop Pet & Gatô",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "QG81Y5AnD0Ge4XrVnJL0",
+      "nome": "Barbearia  sr Vasconcelos",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "SIPvEJsfHLMmUHYPBRrD",
+      "nome": "Prédio Sede da PJF",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "Suzc7qk3fyfSprV058Xr",
+      "nome": "Empório do Açaí",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "Sy0UPPBadsp2kv796lBx",
+      "nome": "Lourdes Square Gastronomia",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "TBEww0xXy40qBiznYjO8",
+      "nome": "Igreja São Sebastião",
+      "tipo": "coleta",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "telefone: Invalid string: must match pattern /^\\(\\d{2}\\)\\s\\d{4,5}-\\d{4}$/"
+      ]
+    },
+    {
+      "id": "TNga1oBO86KccVUyDkTr",
+      "nome": "Ministério Vida Abundante",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "V3Zfgzp4hv0hknKKJiMv",
+      "nome": "Igreja Adventista do Sétimo Dia - Central",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "VfiOlpOLCSS5UgO8ZN92",
+      "nome": "IF Sudeste MG",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "XMCtyQ6SaM7qPRhcIDhx",
+      "nome": "Sindicato dos Bancários",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "ZLAOyfD788bhkgZXOQTs",
+      "nome": "Condomínio Reserva Bandeirantes",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "a9sc8VdghdgAj1DJG4sZ",
+      "nome": "Confeitaria Giga Byte",
+      "tipo": "coleta",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "telefone: Invalid string: must match pattern /^\\(\\d{2}\\)\\s\\d{4,5}-\\d{4}$/"
+      ]
+    },
+    {
+      "id": "aXwm8HM3RgDdbaX7ptFk",
+      "nome": "Trade Hotel",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "aaccd94BADOHVjkNPIv3",
+      "nome": "ADRA Juiz de Fora - Agência Adventista",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "bJBcXGsyMyIVLid30daK",
+      "nome": "Igreja São Sebastião",
+      "tipo": "coleta",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "telefone: Invalid string: must match pattern /^\\(\\d{2}\\)\\s\\d{4,5}-\\d{4}$/"
+      ]
+    },
+    {
+      "id": "bMN6XyVCsZnYAgzdKIpf",
+      "nome": "Paróquia Nossa senhora de Lourdes",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "bieraqQwRjGt8hOyJski",
+      "nome": "Igreja sem limites por jesus",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\"",
+        "responsavel: Invalid string: must match pattern /^[a-zA-ZÀ-ÿ\\s]*$/"
+      ]
+    },
+    {
+      "id": "biyfUPqCNZsECBrcQ76p",
+      "nome": "Igreja Menino Jesus de Praga",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "cXOIsLw9MLCRX7DPH3je",
+      "nome": "Fábrica Algodão Farol",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "dMMCjIPvGnSLeFkdZobo",
+      "nome": "Escola Municipal Professor Nilo Camilo Ayupe",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "dUncd4Fyk81IiW583EvC",
+      "nome": "Birosca Bar e Restaurante",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\"",
+        "responsavel: Invalid string: must match pattern /^[a-zA-ZÀ-ÿ\\s]*$/"
+      ]
+    },
+    {
+      "id": "eAzseXnkOTu67f8GkTL9",
+      "nome": "Ponto de Apoio SOS",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "fMYYnw7NxgKEHVvA6ky2",
+      "nome": "Clínica da Mulher",
+      "tipo": "coleta",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "telefone: Invalid string: must match pattern /^\\(\\d{2}\\)\\s\\d{4,5}-\\d{4}$/"
+      ]
+    },
+    {
+      "id": "fXXS9X8q64ElHB36lYiJ",
+      "nome": "Confeitaria Giga Byte",
+      "tipo": "coleta",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "telefone: Invalid string: must match pattern /^\\(\\d{2}\\)\\s\\d{4,5}-\\d{4}$/"
+      ]
+    },
+    {
+      "id": "gSwfdVnEHtVlDpW487TJ",
+      "nome": "Qpel",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "gXRDF4eXPS2zmocgCnXq",
+      "nome": "Paroquia Perpétuo Socorro",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "goAW9TQ7VXM6PEuVXs6h",
+      "nome": "Igreja São Sebastião",
+      "tipo": "coleta",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "telefone: Invalid string: must match pattern /^\\(\\d{2}\\)\\s\\d{4,5}-\\d{4}$/"
+      ]
+    },
+    {
+      "id": "hsacPEcER9Z182cxetRr",
+      "nome": "Igreja São Sebastião",
+      "tipo": "coleta",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "telefone: Invalid string: must match pattern /^\\(\\d{2}\\)\\s\\d{4,5}-\\d{4}$/"
+      ]
+    },
+    {
+      "id": "iUubtkMJAnxZ4Ff9lCwn",
+      "nome": "Sula Rezende",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "j2Jw1ihLeEc8nXxI9PiP",
+      "nome": "Igreja São Sebastião",
+      "tipo": "coleta",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "telefone: Invalid string: must match pattern /^\\(\\d{2}\\)\\s\\d{4,5}-\\d{4}$/"
+      ]
+    },
+    {
+      "id": "jFvdFDkP2AetqcQqTzto",
+      "nome": "Co.unodade cristã Sol da justiça",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "jxMKfFQoyE73osmpdg9t",
+      "nome": "Shopping Jardim Norte",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "jxwzUuiDpfaDoNx0Tn3h",
+      "nome": "Colégio Adventista de Juiz de Fora",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "kV4hq0akZZkwWbHdAlsL",
+      "nome": "Colégio Católico Comunidade Resgate",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\"",
+        "telefone: Invalid string: must match pattern /^\\(\\d{2}\\)\\s\\d{4,5}-\\d{4}$/"
+      ]
+    },
+    {
+      "id": "lUWjvsUp8SfUGIXL4d4c",
+      "nome": "Igreja São Sebastião",
+      "tipo": "coleta",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "telefone: Invalid string: must match pattern /^\\(\\d{2}\\)\\s\\d{4,5}-\\d{4}$/"
+      ]
+    },
+    {
+      "id": "lYC6VdyVyva67t8XYokg",
+      "nome": "Patrocínio Shop",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "lifVESQln8YLKnGG3u57",
+      "nome": "Escola Municipal Murilo Mendes",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "no6g1NwOH0wbMtib8nZh",
+      "nome": "PARÓQUIA UNIVERSITÁRIA NOSSA SENHORA DE FÁTIMA",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "o70bkoOinN3hAGlV9An7",
+      "nome": "Igreja sobrenatural labareda de fogo",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "ob2d04O7up8zpD3AAAeP",
+      "nome": "UniAcademia",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "p2FODd58o5TS8QCqjpc2",
+      "nome": "Espaço Kids",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "q3H6ckHzWLbhQb409iLc",
+      "nome": "Bahamas Teixeiras",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\"",
+        "telefone: Invalid string: must match pattern /^\\(\\d{2}\\)\\s\\d{4,5}-\\d{4}$/"
+      ]
+    },
+    {
+      "id": "q6srYDk9vl8e99dWr0gc",
+      "nome": "Independência Shopping",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "qMz5j8IwLtGjCEc2GB0N",
+      "nome": "Pet Shop Filhos de Pelo",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\"",
+        "responsavel: Invalid string: must match pattern /^[a-zA-ZÀ-ÿ\\s]*$/"
+      ]
+    },
+    {
+      "id": "rRDa58ccBr1JbqKJRmiC",
+      "nome": "Igreja São Sebastião",
+      "tipo": "coleta",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "telefone: Invalid string: must match pattern /^\\(\\d{2}\\)\\s\\d{4,5}-\\d{4}$/"
+      ]
+    },
+    {
+      "id": "s6bAgI0Ml5QGwT2gK4tD",
+      "nome": "Mister Shopping",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "tCQz7AuLZ1KuDUVhZAph",
+      "nome": "| Fabre | barba, cabelo & imagem",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\"",
+        "responsavel: Invalid string: must match pattern /^[a-zA-ZÀ-ÿ\\s]*$/"
+      ]
+    },
+    {
+      "id": "tNQlYcUq4x9FVOcIuNfM",
+      "nome": "Emcasa",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "tz6kDCmUgoj5XUyvs4dD",
+      "nome": "Fascinasom Acessórios",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "ubZZ1iAI4GzycwFYz3ff",
+      "nome": "Projeto Berimbau",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "ve06hKp8LtVPcuXh38VR",
+      "nome": "Rua dona flauzina",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\"",
+        "endereco: Too small: expected string to have >=10 characters"
+      ]
+    },
+    {
+      "id": "vfNMEK2SBRPqMFCa4KpO",
+      "nome": "Sesc Mesa Brasil",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "vhUb0cFujuIvz39WIcM4",
+      "nome": "Igreja Metodista do São Mateus",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "y0SnmlZTeDXEa7XtDtTo",
+      "nome": "Igreja Metodista Central",
+      "tipo": "coleta",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "responsavel: Invalid string: must match pattern /^[a-zA-ZÀ-ÿ\\s]*$/",
+        "telefone: Invalid string: must match pattern /^\\(\\d{2}\\)\\s\\d{4,5}-\\d{4}$/"
+      ]
+    },
+    {
+      "id": "yRDNsWIRUGMhGt8HixlM",
+      "nome": "Faculdade Unopar Anhanguera",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\"",
+        "responsavel: Invalid string: must match pattern /^[a-zA-ZÀ-ÿ\\s]*$/",
+        "telefone: Invalid string: must match pattern /^\\(\\d{2}\\)\\s\\d{4,5}-\\d{4}$/"
+      ]
+    },
+    {
+      "id": "yTQlR15uptguNhdivKSm",
+      "nome": "Igreja São Sebastião",
+      "tipo": "coleta",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "telefone: Invalid string: must match pattern /^\\(\\d{2}\\)\\s\\d{4,5}-\\d{4}$/"
+      ]
+    },
+    {
+      "id": "ycr8kVyF59wsPFOQoQiu",
+      "nome": "Simetria Academia",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "ytO67IT17w6pBfMA6ltU",
+      "nome": "Sleutjes Beer",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "zVx8q2ZFoxqfni1SKEIh",
+      "nome": "Bar du Léo",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "zWQdlMNiqCJjgAiZ90MV",
+      "nome": "Igreja Sem Limites por Jesus",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    },
+    {
+      "id": "zurcY8JnkRnGJFobol3A",
+      "nome": "Clube Jardim Glória",
+      "tipo": "Indefinido",
+      "error": "Validação falhou",
+      "fieldErrors": [
+        "tipo: Invalid option: expected one of \"coleta\"|\"abrigo\""
+      ]
+    }
+  ],
+  "warnings": [
+    {
+      "id": "0TEBIfeFkDWmeBdi9l7a",
+      "issues": [
+        "Coordenadas fora dos limites de JF: (-21.711513198040354, -43.43939423561096)"
+      ]
+    },
+    {
+      "id": "2V1gkZ1E9pLs34EcuWCD",
+      "issues": [
+        "Missing contact info (telefone and responsavel)"
+      ]
+    },
+    {
+      "id": "4KfC5yxd6kEPqIs21wrc",
+      "issues": [
+        "Missing contact info (telefone and responsavel)"
+      ]
+    },
+    {
+      "id": "4mqYg9TUGcvop5G65MgE",
+      "issues": [
+        "Coordenadas fora dos limites de JF: (-21.70439090165868, -43.43399918424526)"
+      ]
+    },
+    {
+      "id": "4ooHgJxEDjHyLhvyoKG3",
+      "issues": [
+        "Missing contact info (telefone and responsavel)"
+      ]
+    },
+    {
+      "id": "5lxxKhvUIRzksTS3zjXK",
+      "issues": [
+        "Coordenadas fora dos limites de JF: (-21.70439090165868, -43.43399918424526)"
+      ]
+    },
+    {
+      "id": "5ncs6iyUY1B4YPtrtbhN",
+      "issues": [
+        "Missing contact info (telefone and responsavel)"
+      ]
+    },
+    {
+      "id": "7BCfnnNqabFuLC65Ea4X",
+      "issues": [
+        "Missing contact info (telefone and responsavel)"
+      ]
+    },
+    {
+      "id": "8ODUJcpXqqUK6sUf4tpY",
+      "issues": [
+        "Coordenadas fora dos limites de JF: (-21.675710577981103, -43.345688581466675)"
+      ]
+    },
+    {
+      "id": "AqaAScE3TfdHaw9pNzfa",
+      "issues": [
+        "Coordenadas fora dos limites de JF: (-21.675710577981103, -43.345688581466675)"
+      ]
+    },
+    {
+      "id": "AtwN07Pd8OEe3xHRb0ih",
+      "issues": [
+        "Coordenadas fora dos limites de JF: (-21.675710577981103, -43.345688581466675)"
+      ]
+    },
+    {
+      "id": "DhMn4uF1GzwENasV1BGO",
+      "issues": [
+        "Coordenadas fora dos limites de JF: (-21.70439090165868, -43.43399918424526)"
+      ]
+    },
+    {
+      "id": "EfkUZFpAIpk2pc99R1aV",
+      "issues": [
+        "Coordenadas fora dos limites de JF: (-21.70439090165868, -43.43399918424526)"
+      ]
+    },
+    {
+      "id": "Emwqkr7ibdO9eyYAYYH1",
+      "issues": [
+        "Coordenadas fora dos limites de JF: (-21.65619163387295, -43.32102298736573)"
+      ]
+    },
+    {
+      "id": "FZfjGCxp7u2ahG6ovCex",
+      "issues": [
+        "Missing contact info (telefone and responsavel)"
+      ]
+    },
+    {
+      "id": "GPNeEGczggrzHq9roRHU",
+      "issues": [
+        "Missing contact info (telefone and responsavel)"
+      ]
+    },
+    {
+      "id": "IHdVdPSLblNuR47KUo4w",
+      "issues": [
+        "Coordenadas fora dos limites de JF: (-21.70439090165868, -43.43399918424526)"
+      ]
+    },
+    {
+      "id": "IZtCTTkoJQzoRjgCgXgs",
+      "issues": [
+        "Missing contact info (telefone and responsavel)"
+      ]
+    },
+    {
+      "id": "MA4Is2EQ37Dl7ohnsctm",
+      "issues": [
+        "Missing contact info (telefone and responsavel)"
+      ]
+    },
+    {
+      "id": "MRKtQtpDk8UIXJD38tIG",
+      "issues": [
+        "Coordenadas fora dos limites de JF: (-21.70439090165868, -43.43399918424526)"
+      ]
+    },
+    {
+      "id": "O4J8LeAyRUipmxYH4Jja",
+      "issues": [
+        "Missing contact info (telefone and responsavel)"
+      ]
+    },
+    {
+      "id": "OqAznPilTmo5qsICQhc2",
+      "issues": [
+        "Coordenadas fora dos limites de JF: (-21.711513198040354, -43.43939423561096)"
+      ]
+    },
+    {
+      "id": "Qa08XrPDqKLfuw32pw1u",
+      "issues": [
+        "Missing contact info (telefone and responsavel)"
+      ]
+    },
+    {
+      "id": "QbK0Hg3mLrGBlTnsDZLm",
+      "issues": [
+        "Missing contact info (telefone and responsavel)"
+      ]
+    },
+    {
+      "id": "R043Kei95gFHLQfEG5MM",
+      "issues": [
+        "Coordenadas fora dos limites de JF: (-21.711513198040354, -43.43939423561096)"
+      ]
+    },
+    {
+      "id": "ToshyXY1t96nhgA8u02d",
+      "issues": [
+        "Coordenadas fora dos limites de JF: (-21.711513198040354, -43.43939423561096)"
+      ]
+    },
+    {
+      "id": "TyoEp2oBLhDoK6gIJHne",
+      "issues": [
+        "Missing contact info (telefone and responsavel)"
+      ]
+    },
+    {
+      "id": "UwrBW9rWV6T5aeTpMPbb",
+      "issues": [
+        "Coordenadas fora dos limites de JF: (-21.942217060840612, -44.1927918791771)"
+      ]
+    },
+    {
+      "id": "WF2iLyM3QV2sLvphrZYb",
+      "issues": [
+        "Missing contact info (telefone and responsavel)"
+      ]
+    },
+    {
+      "id": "Y7cr200hyrjfm7uJ3Aix",
+      "issues": [
+        "Coordenadas fora dos limites de JF: (-21.70439090165868, -43.43399918424526)"
+      ]
+    },
+    {
+      "id": "YOxrZiULAUEi0DnABIie",
+      "issues": [
+        "Coordenadas fora dos limites de JF: (-21.70439090165868, -43.43399918424526)"
+      ]
+    },
+    {
+      "id": "b9ou7xUKYfuojMYIxle6",
+      "issues": [
+        "Coordenadas fora dos limites de JF: (-21.675710577981103, -43.345688581466675)"
+      ]
+    },
+    {
+      "id": "gLV50iIH7J2rBgzigKcY",
+      "issues": [
+        "Missing contact info (telefone and responsavel)"
+      ]
+    },
+    {
+      "id": "hqse9Kc7rG9sGfJYkgjF",
+      "issues": [
+        "Missing contact info (telefone and responsavel)"
+      ]
+    },
+    {
+      "id": "jIfjwICfrYlMsAQVlVwJ",
+      "issues": [
+        "Coordenadas fora dos limites de JF: (-21.70439090165868, -43.43399918424526)"
+      ]
+    },
+    {
+      "id": "jSjaNyRaI9Itd1H0W6le",
+      "issues": [
+        "Missing contact info (telefone and responsavel)"
+      ]
+    },
+    {
+      "id": "lBESANR6EoHvvwgAfRcm",
+      "issues": [
+        "Missing contact info (telefone and responsavel)"
+      ]
+    },
+    {
+      "id": "mIBjVd7GAlHTmco6bcuS",
+      "issues": [
+        "Missing contact info (telefone and responsavel)"
+      ]
+    },
+    {
+      "id": "ncCp8beLiRU9El3vm0iG",
+      "issues": [
+        "Missing contact info (telefone and responsavel)"
+      ]
+    },
+    {
+      "id": "pEIuVJOJS7wVIkVAuJt9",
+      "issues": [
+        "Coordenadas fora dos limites de JF: (-21.70439090165868, -43.43399918424526)"
+      ]
+    },
+    {
+      "id": "qiAWQTLk1e7CiXdKVjwf",
+      "issues": [
+        "Missing contact info (telefone and responsavel)"
+      ]
+    },
+    {
+      "id": "rZUCUOa8QEQb2ilgGD5y",
+      "issues": [
+        "Missing contact info (telefone and responsavel)"
+      ]
+    },
+    {
+      "id": "s1Nt7NEJuMYUcPwAGRxR",
+      "issues": [
+        "Missing contact info (telefone and responsavel)"
+      ]
+    },
+    {
+      "id": "sAVOPqsn9bgPQm2I3oha",
+      "issues": [
+        "Missing contact info (telefone and responsavel)"
+      ]
+    },
+    {
+      "id": "tl1ToqGrEadOxqWTFo1L",
+      "issues": [
+        "Missing contact info (telefone and responsavel)",
+        "Coordenadas fora dos limites de JF: (-21.68846101440623, -43.43520194292069)"
+      ]
+    },
+    {
+      "id": "vyHHTmPK0QiEJCnwruhg",
+      "issues": [
+        "Missing contact info (telefone and responsavel)"
+      ]
+    },
+    {
+      "id": "yK6txH6Tp6pNOuUNNZnc",
+      "issues": [
+        "Coordenadas fora dos limites de JF: (-21.675710577981103, -43.345688581466675)"
+      ]
+    },
+    {
+      "id": "yqnYptyl1Zj5uhK8DrqU",
+      "issues": [
+        "Coordenadas fora dos limites de JF: (-21.711513198040354, -43.43939423561096)"
+      ]
+    },
+    {
+      "id": "z3NM0q7cbkLkueiuft27",
+      "issues": [
+        "Missing contact info (telefone and responsavel)"
+      ]
+    },
+    {
+      "id": "zjw2CU5IZjh6Hw1q1JjZ",
+      "issues": [
+        "Missing contact info (telefone and responsavel)"
+      ]
+    }
+  ]
+}

@@ -40,12 +40,19 @@ export default function LeafletMap({
   // Initialize map
   useEffect(() => {
     if (!mapRef.current) {
+      const isMobile = window.innerWidth < 768;
+
       const map = L.map('map', {
         center: [center.lat, center.lng],
-        zoom: 13,
+        zoom: isMobile ? 12 : 13,
         zoomControl: true,
-        attributionControl: true,
+        attributionControl: !isMobile, // Hide attribution on mobile to save space
       });
+
+      // Position zoom controls on mobile to not overlap with legend
+      if (isMobile) {
+        map.zoomControl.setPosition('topright');
+      }
 
       // Add OpenStreetMap tiles
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -176,9 +183,13 @@ export default function LeafletMap({
         </div>
       `;
 
+      const isMobile = window.innerWidth < 768;
       marker.bindPopup(popupContent, {
-        maxWidth: 300,
+        maxWidth: isMobile ? 250 : 300,
+        minWidth: isMobile ? 200 : 250,
         className: 'custom-popup',
+        autoPan: true,
+        autoPanPadding: [50, 50],
       });
 
       marker.on('click', () => {

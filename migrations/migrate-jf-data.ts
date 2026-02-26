@@ -10,9 +10,13 @@
  *   npx ts-node migrations/migrate-jf-data.ts
  */
 
+// Load environment variables from .env.local
+import * as path from 'path';
+import * as dotenv from 'dotenv';
+dotenv.config({ path: path.join(__dirname, '..', '.env.local') });
+
 import * as admin from 'firebase-admin';
 import * as fs from 'fs';
-import * as path from 'path';
 
 // Initialize Firebase Admin
 function initializeFirebase() {
@@ -199,7 +203,7 @@ async function migrateData(): Promise<MigrationResult> {
 async function validateMigration(): Promise<boolean> {
   console.log('🔍 Validating migration...\n');
 
-  const db = admin.firestore();
+  const db = initializeFirebase();
 
   // Get counts
   const oldSnapshot = await db.collection('pontos').get();
@@ -267,7 +271,7 @@ async function validateMigration(): Promise<boolean> {
 async function rollback(): Promise<void> {
   console.log('⚠️  ROLLBACK: Deleting all documents from jf_pontos...\n');
 
-  const db = admin.firestore();
+  const db = initializeFirebase();
   const collectionRef = db.collection('jf_pontos');
   const snapshot = await collectionRef.get();
 
