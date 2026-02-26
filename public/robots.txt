@@ -1,0 +1,11 @@
+# robots.txt for Emergência Coletas
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Sitemaps
+Sitemap: https://emergenciacoletas.vercel.app/sitemap.xml
+
+# Crawl delay (be gentle)
+Crawl-delay: 1
