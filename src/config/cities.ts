@@ -7,10 +7,10 @@ export const CITIES: City[] = [
     state: 'MG',
     coordinates: { lat: -21.7642, lng: -43.3502 },
     bounds: {
-      north: -21.6800,
-      south: -21.8200,
-      east: -43.2500,
-      west: -43.4500
+      north: -21.5800,
+      south: -21.9200,
+      east: -43.1500,
+      west: -43.5500
     },
     enabled: true,
     collectionName: 'jf_pontos',
@@ -30,10 +30,10 @@ export const CITIES: City[] = [
     state: 'MG',
     coordinates: { lat: -21.1196, lng: -42.9428 },
     bounds: {
-      north: -21.0600,
-      south: -21.1800,
-      east: -42.8800,
-      west: -43.0000
+      north: -20.9600,
+      south: -21.2800,
+      east: -42.7800,
+      west: -43.1000
     },
     enabled: true,
     collectionName: 'uba_pontos',
@@ -53,10 +53,10 @@ export const CITIES: City[] = [
     state: 'MG',
     coordinates: { lat: -21.8694, lng: -43.3181 },
     bounds: {
-      north: -21.8200,
-      south: -21.9200,
-      east: -43.2500,
-      west: -43.3800
+      north: -21.7700,
+      south: -21.9700,
+      east: -43.2000,
+      west: -43.4300
     },
     enabled: false, // Comentado temporariamente
     collectionName: 'matias_barbosa_pontos',

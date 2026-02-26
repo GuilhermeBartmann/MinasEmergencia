@@ -45,6 +45,7 @@ export default function LeafletMap({
       const map = L.map('map', {
         center: [center.lat, center.lng],
         zoom: isMobile ? 12 : 13,
+        minZoom: 10,
         zoomControl: true,
         attributionControl: !isMobile, // Hide attribution on mobile to save space
       });
@@ -62,9 +63,10 @@ export default function LeafletMap({
 
       // Set bounds if provided
       if (bounds) {
+        const padding = 0.05;
         map.setMaxBounds([
-          [bounds.south, bounds.west],
-          [bounds.north, bounds.east],
+          [bounds.south - padding, bounds.west - padding],
+          [bounds.north + padding, bounds.east + padding],
         ]);
       }
 

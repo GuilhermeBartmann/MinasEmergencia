@@ -1,74 +1,88 @@
-# Emergência Coletas - Next.js 15
+# Minas Emergencia
 
-Sistema colaborativo para localizar pontos de doação e abrigos durante emergências em Minas Gerais.
+Mapa colaborativo para localizar pontos de doacao e abrigos durante emergencias em Minas Gerais.
 
-## 🚀 Tecnologias
+**Acesse:** [minas-emergencia.com](https://minas-emergencia.com)
 
-- **Next.js 15** - Framework React com App Router
-- **TypeScript** - Type safety
-- **Tailwind CSS** - Styling
-- **Firebase Firestore** - Database real-time
-- **Leaflet** - Mapas interativos
-- **React Hook Form + Zod** - Validação de formulários
-- **Vercel Analytics** - Analytics (cookieless, LGPD-compliant)
+## O que e
 
-## 📋 Pré-requisitos
+Sistema web aberto que permite qualquer pessoa cadastrar e localizar pontos de coleta de doacoes e abrigos em cidades de Minas Gerais atingidas por enchentes e desastres naturais.
 
-- Node.js 18+ instalado
-- npm ou yarn
+Funciona como um mapa interativo onde a comunidade pode:
+- Ver pontos de coleta e abrigos no mapa
+- Cadastrar novos pontos com endereco, tipo de doacao aceita, horarios, contato
+- Filtrar por tipo (ponto de coleta / abrigo)
+- Navegar ate o ponto via Google Maps
+
+## Cidades suportadas
+
+| Cidade | Rota | Status |
+|--------|------|--------|
+| Juiz de Fora | `/jf` | Ativo |
+| Uba | `/uba` | Ativo |
+| Matias Barbosa | `/matias-barbosa` | Desativado |
+
+Para adicionar uma cidade, edite `src/config/cities.ts`.
+
+## Stack
+
+- **Next.js 15** (App Router, Turbopack)
+- **TypeScript**
+- **Tailwind CSS**
+- **Firebase Firestore**
+- **Leaflet** (mapas)
+- **React Hook Form + Zod** (formularios)
+- **Vercel** (hosting)
+
+## Rodando localmente
+
+### Pre-requisitos
+
+- Node.js 18+
 - Conta Firebase (gratuita)
 
-## 🔧 Configuração
-
-### 1. Instalar Dependências
+### Setup
 
 ```bash
+# 1. Instalar dependencias
 npm install
-```
 
-### 2. Configurar Firebase
-
-1. Acesse [Firebase Console](https://console.firebase.google.com/)
-2. Crie um novo projeto ou use um existente
-3. Ative o Firestore Database
-4. Copie as credenciais do projeto
-
-### 3. Variáveis de Ambiente
-
-Copie o arquivo `.env.example` para `.env.local` e preencha com suas credenciais:
-
-```bash
+# 2. Configurar variaveis de ambiente
 cp .env.example .env.local
+# Edite .env.local com suas credenciais do Firebase
+
+# 3. Rodar
+npm run dev
 ```
 
-Edite `.env.local` e adicione suas credenciais do Firebase:
+Acesse http://localhost:3000
+
+### Configurando o Firebase
+
+1. Crie um projeto no [Firebase Console](https://console.firebase.google.com/)
+2. Ative o Firestore Database
+3. Copie as credenciais para `.env.local`:
 
 ```env
-NEXT_PUBLIC_FIREBASE_API_KEY=sua_api_key
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=seu_projeto.firebaseapp.com
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=seu_projeto_id
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=seu_projeto.firebasestorage.app
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=seu_messaging_id
-NEXT_PUBLIC_FIREBASE_APP_ID=seu_app_id
+NEXT_PUBLIC_FIREBASE_API_KEY=...
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=...
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=...
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=...
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=...
+NEXT_PUBLIC_FIREBASE_APP_ID=...
 ```
 
-### 4. Configurar Firestore Security Rules
-
-No Firebase Console, vá em Firestore Database > Rules e aplique:
+4. Configure as Security Rules no Firestore:
 
 ```javascript
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-
-    // Pontos das cidades (jf_pontos, uba_pontos, etc)
     match /{cityCollection}/{pointId} {
       allow read: if cityCollection.matches('.*_pontos$');
       allow create: if cityCollection.matches('.*_pontos$');
       allow update, delete: if false;
     }
-
-    // Config de cidades (read-only)
     match /cities/{cityId} {
       allow read: if true;
       allow write: if false;
@@ -77,191 +91,65 @@ service cloud.firestore {
 }
 ```
 
-## 🏃 Rodando o Projeto
+## Estrutura do projeto
 
-### Desenvolvimento
+```
+src/
+  app/              # Rotas (Next.js App Router)
+    api/points/     # API GET/POST pontos
+    api/geocode/    # Proxy geocoding
+    [citySlug]/     # Paginas dinamicas por cidade
+  components/       # Componentes React
+    map/            # MapView, LeafletMap, Legend
+    forms/          # PointForm, inputs
+    city/           # CitySelector, CityStats, CityCard
+  config/cities.ts  # Configuracao das cidades
+  lib/firebase/     # Config e helpers Firebase
+  types/            # TypeScript types
+```
+
+## Deploy
+
+O projeto roda na Vercel. Push na `main` faz deploy automatico.
+
+Para deploy manual:
 
 ```bash
-npm run dev
+npx vercel --prod
 ```
 
-Acesse: http://localhost:3000
+## Contribuindo
 
-### Build de Produção
+Contribuicoes sao bem-vindas! Este e um projeto de ajuda humanitaria.
 
-```bash
-npm run build
-npm start
-```
+1. Fork o repositorio
+2. Crie uma branch (`git checkout -b minha-feature`)
+3. Faca suas alteracoes e teste localmente
+4. Commit e push
+5. Abra um Pull Request
 
-### Type Check
+### Como adicionar uma nova cidade
 
-```bash
-npm run type-check
-```
+1. Adicione a cidade em `src/config/cities.ts` com coordenadas, bounds e slug
+2. Crie a colecao no Firestore (ex: `novacidade_pontos`)
+3. Teste localmente com `npm run dev`
 
-### Lint
+## Projetos similares
 
-```bash
-npm run lint
-```
+Outros projetos voltados para ajuda em emergencias em Minas Gerais:
 
-## 📁 Estrutura do Projeto
+- [SOS Juiz de Fora](https://sosjuizdefora.growberry.com.br/) - Plataforma de apoio emergencial para JF
+- [SOS JF](https://sosjf.org) - Rede de apoio a vitimas de enchentes em Juiz de Fora
+- [Ajude.io](https://ajude.io/) - Plataforma de ajuda para desastres
+- [Minas Emergencia](https://minas-emergencia.com) - Este projeto
 
-```
-emergencia-coletas-nextjs/
-├── src/
-│   ├── app/              # Next.js App Router
-│   │   ├── layout.tsx    # Layout raiz
-│   │   ├── page.tsx      # Landing page
-│   │   ├── api/          # API routes
-│   │   │   ├── points/   # GET/POST pontos
-│   │   │   └── geocode/  # Geocoding proxy
-│   │   └── [citySlug]/   # Páginas dinâmicas
-│   ├── components/       # Componentes React
-│   │   ├── ui/          # Componentes base
-│   │   ├── layout/      # Header, Footer, Nav
-│   │   ├── city/        # CitySelector, Stats
-│   │   ├── map/         # MapView, Legend
-│   │   └── forms/       # PointForm, inputs
-│   ├── lib/             # Utilitários
-│   │   ├── firebase/    # Config e helpers
-│   │   ├── validation/  # Schemas Zod
-│   │   ├── api/         # Rate limiting
-│   │   └── utils/       # Funções auxiliares
-│   ├── types/           # TypeScript types
-│   ├── config/          # Configurações
-│   ├── hooks/           # Custom hooks
-│   └── contexts/        # React contexts
-├── public/              # Assets estáticos
-└── .env.local           # Variáveis de ambiente
-```
+## Contatos de emergencia
 
-## 🗺️ Cidades Suportadas
+- Defesa Civil: **199**
+- Bombeiros: **193**
+- SAMU: **192**
+- Policia: **190**
 
-- **Juiz de Fora** (JF) - `/jf`
-- **Ubá** - `/uba`
-- **Matias Barbosa** - `/matias-barbosa`
-
-Para adicionar mais cidades, edite `src/config/cities.ts`.
-
-## 🔄 Migração de Dados
-
-Se você está migrando de um sistema antigo, use os scripts de migração:
-
-```bash
-# 1. Inicializar coleção de cidades
-npm run migrate:cities
-
-# 2. Migrar dados de Juiz de Fora (pontos → jf_pontos)
-npm run migrate:jf
-
-# 3. Validar migração
-npm run migrate:validate
-```
-
-**⚠️ IMPORTANTE:** Sempre faça backup manual antes de executar migrações!
-
-Consulte o guia completo em [`migrations/README.md`](./migrations/README.md) para instruções detalhadas.
-
-## ✨ Features Implementadas
-
-- ✅ **Fase 1**: Foundation - Next.js + Firebase setup
-- ✅ **Fase 2**: Componentes UI base e landing page
-- ✅ **Fase 3**: Mapa interativo com Leaflet
-- ✅ **Fase 4**: Formulário de cadastro com validação
-- ✅ **Fase 5**: API routes e backend
-- ✅ **Fase 6**: Atualizações em tempo real
-- ✅ **Fase 7**: Scripts de migração de dados
-- ✅ **Fase 8**: SEO e performance otimizados
-- ✅ **Fase 9**: PWA completo
-- ⏳ **Fase 10**: Deploy
-
-## 🔥 Atualizações em Tempo Real
-
-O sistema utiliza Firestore listeners para atualizações automáticas:
-
-- Novos pontos aparecem instantaneamente no mapa
-- Sem necessidade de recarregar a página
-- Notificação visual quando novos pontos são adicionados
-- Indicador de conexão em tempo real
-
-## 🔍 SEO e Performance
-
-Otimizações implementadas para máxima visibilidade:
-
-- **Metadata Dinâmica**: Title, description e keywords por cidade
-- **Open Graph Images**: Imagens sociais geradas dinamicamente (1200×630px)
-- **Structured Data**: JSON-LD para WebSite, Organization e WebPage
-- **Sitemap XML**: Gerado automaticamente para todas as cidades
-- **robots.txt**: Configurado para indexação otimizada
-- **Core Web Vitals**: LCP < 2.5s, FID < 100ms, CLS < 0.1
-- **Font Optimization**: Poppins com next/font (self-hosted)
-- **Performance Monitoring**: Web Vitals tracking integrado
-
-Consulte o guia completo em [`docs/SEO-GUIDE.md`](./docs/SEO-GUIDE.md).
-
-## 📱 PWA (Progressive Web App)
-
-O sistema funciona como um app nativo, instalável e com suporte offline:
-
-- **Instalável**: Adicione à tela inicial (Android, iOS, Desktop)
-- **Offline-First**: Service Worker com cache inteligente
-- **Map Tiles Cached**: 200 tiles do mapa em cache (30 dias)
-- **API Fallback**: Network-first com fallback para cache
-- **Install Prompt**: Banner inteligente após 10 segundos
-- **Offline Indicator**: Badge visual quando sem conexão
-- **Offline Page**: Fallback com instruções e contatos de emergência
-- **App Shortcuts**: Acesso rápido para JF e Ubá
-
-**Estratégias de Cache:**
-- Fonts: CacheFirst (365 dias)
-- Map Tiles: CacheFirst (30 dias, 200 entries)
-- API: NetworkFirst (5 min, timeout 10s)
-- Static Assets: CacheFirst (365 dias)
-
-Consulte o guia completo em [`docs/PWA-GUIDE.md`](./docs/PWA-GUIDE.md).
-
-## 🔒 Segurança
-
-- **Client-side**: Validação Zod + sanitização XSS
-- **Server-side**: Rate limiting (1 req/30s) + validação duplicada
-- **Firestore**: Security rules + server timestamps
-- **LGPD**: Consentimento obrigatório + dados públicos
-
-## 🚀 Deploy
-
-### Vercel (Recomendado)
-
-1. Faça push do código para GitHub
-2. Importe o projeto no [Vercel](https://vercel.com)
-3. Configure as variáveis de ambiente
-4. Deploy automático!
-
-### Variáveis de Ambiente (Vercel)
-
-Configure todas as variáveis do `.env.local` no dashboard da Vercel.
-
-## 📄 Licença
+## Licenca
 
 MIT
-
-## 🤝 Contribuindo
-
-Contribuições são bem-vindas! Este é um sistema de emergência para ajuda humanitária.
-
-## ⚠️ Importante
-
-Este é um sistema de emergência. Mantenha sempre:
-- Disponibilidade 24/7
-- Performance otimizada
-- Segurança robusta
-- Dados sempre validados
-- LGPD compliance
-
-## 📞 Contatos de Emergência
-
-- 🚨 Defesa Civil: 199
-- 🚒 Bombeiros: 193
-- 🚔 Polícia: 190
-- 🏥 SAMU: 192

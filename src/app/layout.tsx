@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from '@vercel/analytics/next';
 import { InstallPrompt, OfflineIndicator } from '@/components/pwa/InstallPrompt';
 import './global.css';
 
@@ -81,9 +81,7 @@ export default function RootLayout({
         {children}
         <InstallPrompt />
         <OfflineIndicator />
-        {process.env.NEXT_PUBLIC_VERCEL_ANALYTICS_ENABLED === 'true' && (
-          <Analytics />
-        )}
+        <Analytics />
       </body>
     </html>
   );

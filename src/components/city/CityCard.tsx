@@ -8,7 +8,7 @@ export interface CityCardProps {
 
 export function CityCard({ city }: CityCardProps) {
   return (
-    <Link href={`/${city.slug}`}>
+    <Link href={`/${city.slug}`} className="w-full max-w-sm">
       <Card
         hover
         className="h-full cursor-pointer group border-2 border-transparent hover:border-emergency-500"
