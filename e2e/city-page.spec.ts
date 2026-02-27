@@ -62,15 +62,19 @@ test.describe('City Page (/jf)', () => {
   })
 
   test('should display the statistics panel with numeric counts', async ({
-    page
+    page,
+    isMobile
   }) => {
     await expect(
       page.getByText('Total de Pontos', { exact: true })
     ).toBeVisible()
-    await expect(
-      page.getByText('Pontos de Coleta', { exact: true })
-    ).toBeVisible()
     await expect(page.getByText('Abrigos', { exact: true })).toBeVisible()
+
+    if (!isMobile) {
+      await expect(
+        page.getByText('Pontos de Coleta', { exact: true })
+      ).toBeVisible()
+    }
 
     const statsNumbers = page.locator('main').getByText(/^\d+$/)
     await expect(statsNumbers.first()).toBeVisible()
@@ -86,18 +90,31 @@ test.describe('City Page (/jf)', () => {
     expect(count).toBeGreaterThan(1)
   })
 
-  test('should display the map legend with point types', async ({ page }) => {
+  test('should display the map legend with point types', async ({
+    page,
+    isMobile
+  }) => {
     await expect(
       page.getByRole('heading', { name: /Legenda do Mapa/i })
     ).toBeVisible()
+
+    const collapseBtn = page.getByRole('button', { name: /Minimizar legenda/i })
+    const expandBtn = page.getByRole('button', { name: /Expandir legenda/i })
+    await collapseBtn.or(expandBtn).waitFor({ state: 'visible' })
+    if (await expandBtn.isVisible()) {
+      await expandBtn.click()
+    }
 
     await expect(
       page.getByText('Ponto de Coleta', { exact: true })
     ).toBeVisible()
     await expect(page.getByText('Abrigo', { exact: true })).toBeVisible()
-    await expect(
-      page.getByText(/Clique nos marcadores para ver detalhes/i)
-    ).toBeVisible()
+
+    if (!isMobile) {
+      await expect(
+        page.getByText(/Clique nos marcadores para ver detalhes/i)
+      ).toBeVisible()
+    }
   })
 
   test('should collapse and expand the map legend', async ({ page }) => {
@@ -126,10 +143,19 @@ test.describe('City Page (/jf)', () => {
   })
 
   test('should display the FAB button to register a new point', async ({
-    page
+    page,
+    isMobile
   }) => {
-    const fabBtn = page.getByRole('button', { name: /Cadastrar novo ponto/i })
-    await expect(fabBtn).toBeVisible()
+    if (isMobile) {
+      // Mobile uses a bottom nav tab instead of a FAB
+      await expect(
+        page.locator('nav button:has-text("Cadastrar")')
+      ).toBeVisible()
+    } else {
+      await expect(
+        page.getByRole('button', { name: /Cadastrar novo ponto/i })
+      ).toBeVisible()
+    }
   })
 })
 

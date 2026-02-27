@@ -4,6 +4,7 @@ import { defineConfig, devices } from '@playwright/test'
  * Configuração do Playwright para testes E2E
  * Executa contra o ambiente de produção: https://minas-emergencia.com
  */
+
 export default defineConfig({
   testDir: './e2e',
 
