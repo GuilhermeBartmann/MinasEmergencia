@@ -20,6 +20,7 @@ export interface LeafletMapProps {
   points: Point[];
   onPointClick?: (point: Point) => void;
   onMapClick?: (lat: number, lng: number) => void;
+  onCenterChange?: (lat: number, lng: number) => void;
   mapPickerMode?: boolean;
   selectedLocation?: { lat: number; lng: number } | null;
 }
@@ -30,6 +31,7 @@ export default function LeafletMap({
   points,
   onPointClick,
   onMapClick,
+  onCenterChange,
   mapPickerMode = false,
   selectedLocation,
 }: LeafletMapProps) {
@@ -70,14 +72,6 @@ export default function LeafletMap({
         ]);
       }
 
-      // Handle map clicks for map picker mode
-      if (mapPickerMode && onMapClick) {
-        map.on('click', (e: L.LeafletMouseEvent) => {
-          onMapClick(e.latlng.lat, e.latlng.lng);
-        });
-        map.getContainer().style.cursor = 'crosshair';
-      }
-
       mapRef.current = map;
     }
 
@@ -88,7 +82,37 @@ export default function LeafletMap({
         mapRef.current = null;
       }
     };
-  }, [center.lat, center.lng, bounds, mapPickerMode, onMapClick]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [center.lat, center.lng, bounds]);
+
+  // Map picker mode: CSS pin at center (no Leaflet marker), moveend notifies parent
+  useEffect(() => {
+    if (!mapRef.current || !mapPickerMode) return;
+    const map = mapRef.current;
+
+    // Notifica o centro inicial
+    const initial = map.getCenter();
+    onCenterChange?.(initial.lat, initial.lng);
+
+    // Após cada arrastar/zoom parar, notifica o novo centro
+    const handleMoveEnd = () => {
+      const c = map.getCenter();
+      onCenterChange?.(c.lat, c.lng);
+    };
+
+    // Clique: pan suave para o ponto clicado, moveend notifica depois
+    const handleClick = (e: L.LeafletMouseEvent) => {
+      map.panTo(e.latlng, { animate: true, duration: 0.3 });
+    };
+
+    map.on('moveend', handleMoveEnd);
+    map.on('click', handleClick);
+
+    return () => {
+      map.off('moveend', handleMoveEnd);
+      map.off('click', handleClick);
+    };
+  }, [mapPickerMode, onCenterChange]);
 
   // Update markers when points change
   useEffect(() => {
@@ -188,11 +212,11 @@ export default function LeafletMap({
 
       const isMobile = window.innerWidth < 768;
       marker.bindPopup(popupContent, {
-        maxWidth: isMobile ? 250 : 300,
-        minWidth: isMobile ? 200 : 250,
+        maxWidth: isMobile ? 280 : 300,
+        minWidth: isMobile ? 240 : 250,
         className: 'custom-popup',
         autoPan: true,
-        autoPanPadding: [50, 50],
+        autoPanPadding: isMobile ? [5, 5] : [50, 50],
       });
 
       marker.on('click', () => {
@@ -206,48 +230,34 @@ export default function LeafletMap({
     });
   }, [points, onPointClick]);
 
-  // Handle map picker selected location
+  // Show confirmed location marker (only after picker mode ends)
   useEffect(() => {
     if (!mapRef.current) return;
 
-    // Remove existing map picker marker
     if (mapPickerMarkerRef.current) {
       mapPickerMarkerRef.current.remove();
       mapPickerMarkerRef.current = null;
     }
 
-    // Add new marker if location is selected
-    if (selectedLocation && mapPickerMode) {
-      const greenIcon = L.icon({
-        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
-        shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -34],
-        shadowSize: [41, 41],
-      });
+    // During picker mode the CSS pin handles the visual — skip Leaflet marker
+    if (!selectedLocation || mapPickerMode) return;
 
-      const marker = L.marker([selectedLocation.lat, selectedLocation.lng], {
-        icon: greenIcon,
-        draggable: true,
-      });
+    const greenIcon = L.icon({
+      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+      shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41],
+    });
 
-      marker.on('dragend', (e: L.DragEndEvent) => {
-        const pos = e.target.getLatLng();
-        if (onMapClick) {
-          onMapClick(pos.lat, pos.lng);
-        }
-      });
+    const marker = L.marker([selectedLocation.lat, selectedLocation.lng], {
+      icon: greenIcon,
+    });
 
-      marker.addTo(mapRef.current);
-      mapPickerMarkerRef.current = marker;
-
-      // Pan to selected location
-      mapRef.current.setView([selectedLocation.lat, selectedLocation.lng], 16, {
-        animate: true,
-      });
-    }
-  }, [selectedLocation, mapPickerMode, onMapClick]);
+    marker.addTo(mapRef.current);
+    mapPickerMarkerRef.current = marker;
+  }, [selectedLocation, mapPickerMode]);
 
   return (
     <div id="map" className="w-full h-full" />

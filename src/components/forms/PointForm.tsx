@@ -54,11 +54,12 @@ export function PointForm({
   const tipo = watch('tipo');
   const endereco = watch('endereco');
 
-  // Update coordinates when location is selected
+  // Update coordinates when location is selected and reset picker button
   useEffect(() => {
     if (selectedLocation) {
       setValue('lat', selectedLocation.lat);
       setValue('lng', selectedLocation.lng);
+      setMapPickerEnabled(false);
     }
   }, [selectedLocation, setValue]);
 

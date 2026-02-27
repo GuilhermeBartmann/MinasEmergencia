@@ -8,6 +8,10 @@
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:debug": "playwright test --debug",
+    "test:e2e:report": "playwright show-report",
     "migrate:cities": "ts-node migrations/create-cities-collection.ts",
     "migrate:preview": "ts-node migrations/migrate-jf-data-enhanced.ts preview",
     "migrate:execute": "ts-node migrations/migrate-jf-data-enhanced.ts migrate",
@@ -39,6 +43,7 @@
   },
   "devDependencies": {
     "@ducanh2912/next-pwa": "^10.2.9",
+    "@playwright/test": "^1.58.2",
     "@types/leaflet": "^1.9.21",
     "dotenv": "^17.3.1",
     "eslint": "^9.39.3",
