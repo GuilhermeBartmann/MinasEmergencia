@@ -147,7 +147,6 @@ test.describe('City Page (/jf)', () => {
     isMobile
   }) => {
     if (isMobile) {
-      // Mobile uses a bottom nav tab instead of a FAB
       await expect(
         page.locator('nav button:has-text("Cadastrar")')
       ).toBeVisible()
