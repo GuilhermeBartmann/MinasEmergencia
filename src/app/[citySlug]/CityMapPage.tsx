@@ -6,6 +6,7 @@ import { useRealtime } from '@/hooks/useRealtime';
 import { Header } from '@/components/layout/Header';
 import { MapView } from '@/components/map/MapView';
 import { MapLegend } from '@/components/map/MapLegend';
+import { DonationFilter } from '@/components/map/DonationFilter';
 import { CityStats } from '@/components/city/CityStats';
 import { PointForm } from '@/components/forms/PointForm';
 import { Modal } from '@/components/ui/Modal';
@@ -28,6 +29,8 @@ export function CityMapPage({ city }: { city: City }) {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [mobileTab, setMobileTab] = useState<'map' | 'form'>('map');
+  const [selectedDonations, setSelectedDonations] = useState<string[]>([]);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [mapPickerMode, setMapPickerMode] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState<{ lat: number; lng: number } | null>(null);
   const [pendingAddress, setPendingAddress] = useState<string | null>(null);
@@ -36,6 +39,10 @@ export function CityMapPage({ city }: { city: City }) {
 
   const abrigoCount = points.filter(p => p.tipo === 'abrigo').length;
   const coletaCount = points.length - abrigoCount;
+
+  const filteredPoints = selectedDonations.length > 0
+    ? points.filter(p => selectedDonations.some(d => p.doacoes?.includes(d)))
+    : points;
 
   // Check if mobile
   useEffect(() => {
@@ -212,7 +219,7 @@ export function CityMapPage({ city }: { city: City }) {
 
             <MapView
               city={city}
-              points={points}
+              points={filteredPoints}
               onPointClick={(point) => console.log('Point clicked:', point)}
               mapPickerMode={mapPickerMode}
               onCenterChange={handleCenterChange}
@@ -296,17 +303,52 @@ export function CityMapPage({ city }: { city: City }) {
         <MobileNavbar
           activeTab={mobileTab}
           onTabChange={setMobileTab}
+          onFilterClick={() => setIsFilterOpen(true)}
+          hasActiveFilter={selectedDonations.length > 0}
         />
       )}
 
-      {/* Desktop FAB */}
+      {/* Desktop — botões Filtrar + Cadastrar */}
       {!isMobile && (
-        <Fab
-          position="bottom-right"
-          onClick={handleFormOpen}
-          aria-label="Cadastrar novo ponto"
-        />
+        <div className="fixed bottom-6 right-6 z-40 flex items-center gap-2">
+          <button
+            onClick={() => setIsFilterOpen(true)}
+            className={cn(
+              'flex items-center gap-2 px-4 py-3 rounded-full font-semibold text-sm shadow-lg transition-all duration-200',
+              selectedDonations.length > 0
+                ? 'bg-emergency-600 text-white hover:bg-emergency-700'
+                : 'bg-white text-gray-700 border border-gray-200 hover:bg-gray-50 hover:border-gray-300'
+            )}
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-7.586L3.293 6.707A1 1 0 013 6V4z" />
+            </svg>
+            Filtrar
+            {selectedDonations.length > 0 && (
+              <span className="bg-white/30 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                {selectedDonations.length}
+              </span>
+            )}
+          </button>
+
+          <Fab
+            position="bottom-right"
+            onClick={handleFormOpen}
+            aria-label="Cadastrar novo ponto"
+            className="!relative !bottom-auto !right-auto"
+          />
+        </div>
       )}
+
+      {/* Filter sheet — mobile + desktop */}
+      <DonationFilter
+        isOpen={isFilterOpen}
+        onClose={() => setIsFilterOpen(false)}
+        selectedDonations={selectedDonations}
+        onChange={setSelectedDonations}
+        totalPoints={points.length}
+        filteredCount={filteredPoints.length}
+      />
 
       {/* Desktop Modal */}
       {!isMobile && (
