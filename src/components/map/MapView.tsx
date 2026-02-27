@@ -23,6 +23,7 @@ export interface MapViewProps {
   points: Point[];
   onPointClick?: (point: Point) => void;
   onMapClick?: (lat: number, lng: number) => void;
+  onCenterChange?: (lat: number, lng: number) => void;
   mapPickerMode?: boolean;
   selectedLocation?: { lat: number; lng: number } | null;
 }
@@ -32,6 +33,7 @@ export function MapView({
   points,
   onPointClick,
   onMapClick,
+  onCenterChange,
   mapPickerMode = false,
   selectedLocation,
 }: MapViewProps) {
@@ -43,6 +45,7 @@ export function MapView({
         points={points}
         onPointClick={onPointClick}
         onMapClick={onMapClick}
+        onCenterChange={onCenterChange}
         mapPickerMode={mapPickerMode}
         selectedLocation={selectedLocation}
       />
