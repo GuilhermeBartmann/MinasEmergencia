@@ -23,7 +23,7 @@ export function CityMapPage({ city }: { city: City }) {
   const { points, loading, error, newPointsCount, resetNewPointsCount } = useRealtime(
     city.collectionName,
     [], // No initial points
-    { limitCount: 500, enabled: true }
+    { limitCount: 500, enabled: true, citySlug: city.slug }
   );
 
   const [isFormOpen, setIsFormOpen] = useState(false);

@@ -14,15 +14,16 @@ export interface UseRealtimeOptions {
 export function useRealtime(
   collectionName: string,
   initialPoints: Point[] = [],
-  options: UseRealtimeOptions = {}
+  options: UseRealtimeOptions & { citySlug?: string } = {}
 ) {
-  const { enabled = true } = options;
+  const { enabled = true, citySlug: citySlugProp } = options;
 
   const [points, setPoints] = useState<Point[]>(initialPoints);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const citySlug = collectionName.replace('_pontos', '');
+  // Use explicit slug when provided (required for slugs that differ from collection prefix)
+  const citySlug = citySlugProp ?? collectionName.replace('_pontos', '');
 
   useEffect(() => {
     if (!enabled) {
