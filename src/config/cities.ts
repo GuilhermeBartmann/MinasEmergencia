@@ -58,16 +58,39 @@ export const CITIES: City[] = [
       east: -43.2000,
       west: -43.4300
     },
-    enabled: false, // Comentado temporariamente
-    collectionName: 'matias_barbosa_pontos',
+    enabled: true,
+    collectionName: 'matias_pontos',
     metadata: {
       description: 'Pontos de coleta e abrigos',
       emergencyPhone: '199'
     },
     seo: {
-      title: 'Emergência Matias Barbosa - Pontos de Coleta',
-      description: 'Mapa colaborativo de pontos de doação e abrigos em Matias Barbosa, MG',
+      title: 'Emergência Matias Barbosa - Pontos de Coleta e Abrigos',
+      description: 'Mapa colaborativo de pontos de doação e abrigos para vítimas de enchentes em Matias Barbosa, MG',
       keywords: ['matias barbosa', 'enchente', 'doações', 'abrigos', 'emergência', 'minas gerais']
+    }
+  },
+  {
+    name: 'Cataguases',
+    slug: 'cataguases',
+    state: 'MG',
+    coordinates: { lat: -21.3933, lng: -42.6967 },
+    bounds: {
+      north: -21.3000,
+      south: -21.4800,
+      east: -42.5800,
+      west: -42.8100
+    },
+    enabled: true,
+    collectionName: 'cataguases_pontos',
+    metadata: {
+      description: 'Pontos de coleta e abrigos',
+      emergencyPhone: '199'
+    },
+    seo: {
+      title: 'Emergência Cataguases - Pontos de Coleta e Abrigos',
+      description: 'Mapa colaborativo de pontos de doação e abrigos para vítimas de enchentes em Cataguases, MG',
+      keywords: ['cataguases', 'enchente', 'doações', 'abrigos', 'emergência', 'minas gerais']
     }
   }
 ];
