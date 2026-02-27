@@ -90,6 +90,15 @@ function LinkIcon() {
   );
 }
 
+function CloudIcon() {
+  return (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 15a4 4 0 004 4h9a5 5 0 10-.12-9.998A5.002 5.002 0 0116 7h-2a2 2 0 110-4H3v4z" />
+    </svg>
+  );
+}
+
+
 const helpLinks = [
   {
     href: "https://ajude.io/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnrOrs7KRTE2WHvtzueKm1Q2dxm8L0YOr4bXhXNI1SRqhXv3ohQXC5ZZgJ9XU_aem_ArGA5Vy4UDecevty3kBziQ",
@@ -132,6 +141,12 @@ const helpLinks = [
     icon: <BellAlertIcon />,
     title: "Emergência MG",
     description: "Portal de emergências para Minas Gerais",
+  },
+  {
+    href: "https://sosjf.org/chuvas",
+    icon: <CloudIcon />,
+    title: "Painel de Chuvas",
+    description: "Painel de acompanhamento de chuvas em tempo real com satélites e estações meteorológicas",
   },
 ];
 
