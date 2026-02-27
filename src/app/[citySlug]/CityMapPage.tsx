@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { City } from '@/types/city';
 import { useRealtime } from '@/hooks/useRealtime';
 import { Header } from '@/components/layout/Header';
@@ -30,6 +30,9 @@ export function CityMapPage({ city }: { city: City }) {
   const [mobileTab, setMobileTab] = useState<'map' | 'form'>('map');
   const [mapPickerMode, setMapPickerMode] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState<{ lat: number; lng: number } | null>(null);
+  const [pendingAddress, setPendingAddress] = useState<string | null>(null);
+  const [addressLoading, setAddressLoading] = useState(false);
+  const addressTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const abrigoCount = points.filter(p => p.tipo === 'abrigo').length;
   const coletaCount = points.length - abrigoCount;
@@ -73,21 +76,52 @@ export function CityMapPage({ city }: { city: City }) {
     // No need to refetch - real-time listener will update automatically!
   };
 
-  const handleMapClick = (lat: number, lng: number) => {
-    if (mapPickerMode) {
-      setSelectedLocation({ lat, lng });
-      // Reopen modal on desktop so user can continue filling the form
-      if (!isMobile) {
-        setIsFormOpen(true);
+  const fetchAddress = useCallback((lat: number, lng: number) => {
+    if (addressTimerRef.current) clearTimeout(addressTimerRef.current);
+    setAddressLoading(true);
+    setPendingAddress(null);
+    // 1100ms debounce — respeita o limite de 1 req/s do Nominatim
+    addressTimerRef.current = setTimeout(async () => {
+      try {
+        const res = await fetch(`/api/reverse-geocode?lat=${lat}&lng=${lng}`);
+        const data = await res.json();
+        setPendingAddress(data.address ?? null);
+      } catch {
+        setPendingAddress(null);
+      } finally {
+        setAddressLoading(false);
       }
+    }, 1100);
+  }, []);
+
+  // Fires after map stops moving (moveend) — stable, no conflict with click
+  const handleCenterChange = useCallback((lat: number, lng: number) => {
+    setSelectedLocation({ lat, lng });
+    fetchAddress(lat, lng);
+  }, [fetchAddress]);
+
+  const handleConfirmLocation = (confirmed: boolean) => {
+    if (addressTimerRef.current) clearTimeout(addressTimerRef.current);
+    setMapPickerMode(false);
+    setPendingAddress(null);
+    if (!confirmed) {
+      setSelectedLocation(null);
+    }
+    if (!isMobile) {
+      setIsFormOpen(true);
+    } else {
+      setMobileTab('form');
     }
   };
 
   const handleMapPickerToggle = (enabled: boolean) => {
     setMapPickerMode(enabled);
-    // Close modal on desktop so user can click the map
     if (enabled && !isMobile) {
       setIsFormOpen(false);
+    }
+    if (!enabled) {
+      if (addressTimerRef.current) clearTimeout(addressTimerRef.current);
+      setPendingAddress(null);
     }
   };
 
@@ -181,10 +215,58 @@ export function CityMapPage({ city }: { city: City }) {
               points={points}
               onPointClick={(point) => console.log('Point clicked:', point)}
               mapPickerMode={mapPickerMode}
-              onMapClick={handleMapClick}
+              onCenterChange={handleCenterChange}
               selectedLocation={selectedLocation}
             />
+
+            {/* CSS pin fixed at map center — follows map drag naturally */}
+            {mapPickerMode && (
+              <img
+                src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png"
+                alt="pin"
+                className="absolute pointer-events-none z-[1000]"
+                style={{
+                  width: 25,
+                  height: 41,
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -100%)',
+                }}
+              />
+            )}
+
             <MapLegend />
+
+            {/* Confirmation box — compact, above the pin */}
+            {mapPickerMode && (
+              <div
+                className="absolute left-1/2 -translate-x-1/2 z-[2000] bg-white rounded-lg shadow-xl pointer-events-auto"
+                style={{ bottom: 'calc(50% + 48px)', width: '180px', padding: '8px 10px' }}
+              >
+                <p className="text-xs font-bold text-gray-900 text-center leading-tight">
+                  📍 Confirmar local?
+                </p>
+                <p className="text-[10px] text-gray-500 text-center mt-0.5 mb-2 leading-tight truncate">
+                  {addressLoading
+                    ? 'Buscando endereço...'
+                    : pendingAddress ?? 'Mova o mapa para posicionar'}
+                </p>
+                <div className="flex gap-1.5">
+                  <button
+                    onClick={() => handleConfirmLocation(false)}
+                    className="flex-1 py-1 text-xs border border-gray-300 rounded font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
+                  >
+                    Não
+                  </button>
+                  <button
+                    onClick={() => handleConfirmLocation(true)}
+                    className="flex-1 py-1 text-xs bg-green-600 text-white rounded font-semibold hover:bg-green-700 transition-colors"
+                  >
+                    Sim
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Form Section - Mobile */}
